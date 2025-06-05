@@ -1,0 +1,22 @@
+{
+	"configurations": [
+		{
+			"type": "swift",
+			"request": "launch",
+			"args": [],
+			"cwd": "${workspaceFolder:music-api}",
+			"name": "Debug MusicApi",
+			"program": "${workspaceFolder:music-api}/.build/debug/MusicApi",
+			"preLaunchTask": "swift: Build Debug MusicApi"
+		},
+		{
+			"type": "swift",
+			"request": "launch",
+			"args": [],
+			"cwd": "${workspaceFolder:music-api}",
+			"name": "Release MusicApi",
+			"program": "${workspaceFolder:music-api}/.build/release/MusicApi",
+			"preLaunchTask": "swift: Build Release MusicApi"
+		}
+	]
+}
