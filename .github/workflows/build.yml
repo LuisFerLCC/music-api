@@ -16,5 +16,15 @@ jobs:
       - name: Docker Build
         run: docker build -t luisferlcc/412-music-api:latest .
 
+      - name: Ejecutar migracion en produccion
+        run: |
+          docker container run --rm \
+          -e DATABASE_HOST=${{ secrets.DATABASE_HOST }} \
+          -e DATABASE_PORT=${{ secrets.DATABASE_PORT }} \
+          -e DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} \
+          -e DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} \
+          -e DATABASE_NAME=${{ secrets.DATABASE_NAME }} \
+          juanfr97/412-music-api:latest migrate --yes
+
       - name: Docker Push
         run: docker push luisferlcc/412-music-api:latest
