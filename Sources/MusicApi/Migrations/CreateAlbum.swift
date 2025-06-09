@@ -12,7 +12,7 @@ struct CreateAlbum: AsyncMigration {
         try await database.schema("album")
             .id()
             .field("title", .string, .required)
-            .field("image", .custom("VARCHAR(50)"), .required)
+            .field("image", .custom("VARCHAR(300)"), .required)
             .field("description", .string, .required)
             .field("artist", .string, .required)
             .create()
