@@ -44,6 +44,15 @@ func routes(_ app: Application) throws {
 		try await existingAlbum.update(on: req.db)
 		return existingAlbum
 	}
+	
+	app.delete("api", "albums", ":id") { req async throws -> HTTPStatus in
+		guard let album = try await Album.find(req.parameters.get("id"), on: req.db) else {
+			throw Abort(.notFound, reason: "El registro no ha sido encontrado")
+		}
+		
+		try await album.delete(on: req.db)
+		return .noContent
+	}
 
     try app.register(collection: TodoController())
 }
